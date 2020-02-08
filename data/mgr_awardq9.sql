@@ -7,8 +7,15 @@ awardsmanagers
 teams
 people
 DIMENSIONS::
+...
 FACTS::
-ANSWER:: Jim Leyland dfor the Pittsburgh Pirates and Detroit Tigers, and Davey Johnson for the Baltimore Orioles and Washington Nationals
+...
+FILTERS::
+...
+DESCRIPTION::
+...
+ANSWER:: 
+Jim Leyland dfor the Pittsburgh Pirates and Detroit Tigers, and Davey Johnson for the Baltimore Orioles and Washington Nationals
 
 */
 

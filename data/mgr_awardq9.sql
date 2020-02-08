@@ -1,7 +1,21 @@
+/*
+QUESTION::
+Which managers have won the TSN Manager of the Year award in both the National League (NL) and the American League (AL)? 
+Give their full name and the teams that they were managing when they won the award.
+SOURCES:
+awardsmanagers
+teams
+people
+DIMENSIONS::
+FACTS::
+ANSWER::
+
+*/
+
 WITH Award_mgr AS(
 	SELECT am.playerid, am.lgid,yearid
 	FROM awardsmanagers AS am
-	WHERE awardid ILIKE 'TSN Manager of the Year'),
+	WHERE awardid = 'TSN Manager of the Year'),
 	
  al_mgr AS(SELECT DISTINCT am.playerid
 	FROM award_mgr AS am

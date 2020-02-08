@@ -25,8 +25,6 @@ LIMIT 1*/
 
 
 
-
-
 --Seattle Mariners SEA 116 2001
 
 --What is the smallest number of wins for a team that did win the world series? 
@@ -118,15 +116,15 @@ WITH wsw AS(SELECT name, yearid, wswin, w
 			FROM wsw
 			GROUP BY yearid	 ),
 
-ws_comp AS (SELECT wsw.name,wsw.yearid, CASE WHEN w = max_wins THEN 1
-			ELSE 0 END AS had_max_w,  wswin,w,max_wins
+ws_comp AS (SELECT wsw.name,wsw.yearid, CASE WHEN w = max_wins THEN '1':: numeric
+			ELSE '0':: numeric END AS had_max_w,  wswin,w,max_wins
 			FROM wsw
 			JOIN MAX_ws AS mws
 			ON mws.yearid = wsw.yearid
 			ORDER BY w DESC)
 
 --SELECT CAST(COUNT(*)AS float)/CAST(count(wsw.yearid)AS float)
-SELECT ROUND(CAST(COUNT(wsc.had_max_w) AS numeric)/CAST(Count(wsw.yearid) AS numeric)),2)
+SELECT ROUND((SUM(wsc.had_max_w))/CAST(Count(wsc.had_max_w) AS numeric),2)
 FROM ws_comp AS wsc
 JOIN wsw 
 ON wsw.yearid = wsc.yearid

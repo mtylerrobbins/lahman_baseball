@@ -1,13 +1,30 @@
-/*Find the player who had the most success stealing bases in 2016, where success is measured as the 
+/*
+QUESTION::
+Find the player who had the most success stealing bases in 2016, where success is measured as the 
 percentage of stolen base attempts which are successful. (A stolen base attempt results either in a 
 stolen base or being caught stealing.) 
-Consider only players who attempted at least 20 stolen bases.*/
+Consider only players who attempted at least 20 stolen bases.
+SOURCES::
+people
+batting
+DIMENSIONS::
+
+FACTS::
+
+ANSWER:: Chris Owings at stolen base percentage of 91.3%
+*/
+
+
 SELECT CONCAT(namefirst,' ',namelast) AS player_name,SB,CS, ROUND(CAST((CAST(SB AS float))/(CAST(SB+CS AS float))*100 AS numeric),2) AS sb_percent 
 FROM people as p
 JOIN batting as b
 ON b.playerid = p.playerid
 WHERE b.yearid = 2016 AND CS+SB >=20
 ORDER BY sb_percent DESC
+LIMIT 1
+
+
+
 /*SELECT (CAST(SB AS float))/(CAST(SB+CS AS float))*100
 FROM batting
 WHERE yearid = 2016 AND SB !=0 AND CS!=0*/
